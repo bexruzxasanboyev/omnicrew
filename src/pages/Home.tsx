@@ -63,14 +63,14 @@ export function Home() {
   return (
     <main>
       <section className="px-4 pb-6 pt-5 md:pt-6">
-        <div className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[28px]">
+        <div className="mx-auto max-w-[1240px] md:relative md:overflow-hidden md:rounded-[28px]">
           <img
             src="/images/hero-crew.jpg"
             alt="Yetuk OmniCrew agentlari yig'ilish stolida ishlayapti"
-            className="aspect-[16/9] w-full object-cover object-center"
+            className="aspect-[4/3] w-full rounded-[28px] object-cover object-center md:aspect-[16/9] md:rounded-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-ink/20 via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 max-w-xl rounded-[24px] bg-white/96 p-5 shadow-[0_16px_50px_rgba(20,24,32,0.14)] md:bottom-8 md:left-8 md:right-auto md:p-8">
+          <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-tr from-ink/20 via-transparent to-transparent md:block" />
+          <div className="mt-4 rounded-[24px] bg-white p-5 shadow-[0_16px_50px_rgba(20,24,32,0.14)] md:absolute md:bottom-8 md:left-8 md:right-auto md:mt-0 md:max-w-xl md:bg-white/96 md:p-8">
             <h1 className="text-3xl font-semibold leading-[1.05] tracking-tight text-ink md:text-5xl">
               Jamoangiz uchun
               <br />
@@ -134,8 +134,8 @@ export function Home() {
       <section className="bg-[#1a2332] py-20 text-white">
         <Reveal className="mx-auto max-w-4xl px-5 text-center">
           <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-            O‘z agentingizni yarating yoki{" "}
-            <span className="text-sky">biznikini oling</span>
+            Bizning{" "}
+            <span className="text-sky">agentlarimiz</span>
           </h2>
         </Reveal>
         <AgentCarousel />
@@ -214,10 +214,9 @@ export function Home() {
         </Reveal>
         <div className="mx-auto mt-14 grid max-w-[980px] items-end gap-8 md:grid-cols-3">
           <div className="text-center">
-            <Media
-              src="/video/skills-create.mp4"
-              poster="/images/skills-create.jpg"
-              alt="Skill yaratish animatsiyasi"
+            <img
+              src="/images/skills-create.jpg?v=2"
+              alt="Agent chatdan skill yaratayapti"
               className="mx-auto aspect-square w-full max-w-[240px] rounded-[28px] object-cover"
             />
             <h3 className="mt-5 text-lg font-semibold">Istalgan skillni yarating</h3>
@@ -227,7 +226,7 @@ export function Home() {
           </div>
           <div className="text-center">
             <img
-              src="/images/skills-packs.jpg"
+              src="/images/skills-packs.jpg?v=2"
               alt="Skill packlar javoni"
               className="mx-auto aspect-square w-full max-w-[280px] rounded-[28px] object-cover"
             />
@@ -238,7 +237,7 @@ export function Home() {
           </div>
           <div className="text-center">
             <img
-              src="/images/skills-share.jpg"
+              src="/images/skills-share.jpg?v=2"
               alt="Skill ulashish illyustratsiyasi"
               className="mx-auto aspect-square w-full max-w-[240px] rounded-[28px] object-cover"
             />
