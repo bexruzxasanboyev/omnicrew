@@ -1,0 +1,87 @@
+@import "@fontsource-variable/outfit";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit Variable", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #141820;
+  --color-muted: #5c6573;
+  --color-line: #d5dce6;
+  --color-paper: #eef1f6;
+  --color-fog: #f7f8fb;
+  --color-cobalt: #1d6fff;
+  --color-cobalt-deep: #1248c9;
+  --color-night: #152033;
+  --color-sky: #7eb6ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-cobalt) 22%, white);
+  color: var(--color-ink);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+.flip-scene {
+  perspective: 1200px;
+}
+
+.flip-card {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-scene.is-flipped .flip-card {
+  transform: rotateY(180deg);
+}
+
+.hide-scroll {
+  scrollbar-width: none;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.flip-scene:not(.is-flipped) .flip-face:not(.flip-back),
+.flip-scene.is-flipped .flip-back {
+  pointer-events: auto;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .flip-card {
+    transition: none;
+  }
+}
