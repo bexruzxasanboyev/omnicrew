@@ -27,14 +27,14 @@ export function Security() {
   return (
     <main className="pb-20">
       <section className="px-4 pb-6 pt-5 md:pt-6">
-        <div className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[28px]">
+        <div className="mx-auto max-w-[1240px] md:relative md:overflow-hidden md:rounded-[28px]">
           <img
             src="/images/security-key.jpg"
             alt="Odam kalitni OmniCrew agentiga topshirayapti"
-            className="aspect-[16/9] w-full object-cover object-center"
+            className="aspect-[16/9] w-full rounded-[28px] object-cover object-center md:rounded-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-ink/20 via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 max-w-xl rounded-[24px] bg-white/96 p-5 shadow-[0_16px_50px_rgba(20,24,32,0.14)] md:bottom-8 md:left-8 md:right-auto md:p-8">
+          <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-tr from-ink/20 via-transparent to-transparent md:block" />
+          <div className="mt-4 rounded-[24px] bg-white p-5 shadow-[0_16px_50px_rgba(20,24,32,0.14)] md:absolute md:bottom-8 md:left-8 md:right-auto md:mt-0 md:max-w-xl md:bg-white/96 md:p-8">
             <h1 className="text-3xl font-semibold leading-[1.05] tracking-tight text-ink md:text-5xl">
               Butun kompaniya agent ishlatishi uchun qurilgan
             </h1>
