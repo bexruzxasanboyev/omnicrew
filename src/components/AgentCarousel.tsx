@@ -15,7 +15,7 @@ export function AgentCarousel() {
   }
 
   return (
-    <div className="relative mt-12">
+    <div className="relative mt-8 md:mt-12">
       <button
         type="button"
         aria-label="Oldingi agentlar"
@@ -34,7 +34,7 @@ export function AgentCarousel() {
       </button>
       <div
         ref={scroller}
-        className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 hide-scroll md:px-16"
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-4 hide-scroll md:gap-5 md:px-16"
       >
         {agents.map((agent) => (
           <FlipCard key={agent.id} agent={agent} />

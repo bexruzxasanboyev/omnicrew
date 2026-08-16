@@ -131,9 +131,9 @@ export function Home() {
         />
       </section>
 
-      <section className="bg-[#1a2332] py-20 text-white">
+      <section className="bg-[#1a2332] py-14 text-white md:py-20">
         <Reveal className="mx-auto max-w-4xl px-5 text-center">
-          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-6xl">
             Bizning{" "}
             <span className="text-sky">agentlarimiz</span>
           </h2>

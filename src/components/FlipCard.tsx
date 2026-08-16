@@ -21,7 +21,7 @@ export function FlipCard({ agent }: { agent: Agent }) {
 
   return (
     <article
-      className={`flip-scene h-[500px] w-[400px] shrink-0 cursor-pointer snap-start md:h-[520px] md:w-[440px] ${
+      className={`flip-scene h-[430px] w-[min(300px,82vw)] shrink-0 cursor-pointer snap-start md:h-[520px] md:w-[440px] ${
         flipped ? "is-flipped" : ""
       }`}
     >
@@ -41,9 +41,11 @@ export function FlipCard({ agent }: { agent: Agent }) {
           aria-label={`${agent.name} kartasini o‘girish`}
         >
           <FlipButton />
-          <div className="relative z-10 flex h-[42%] flex-col px-7 pb-2 pt-8">
-            <p className="pr-20 text-[16px] leading-snug text-ink/55">{agent.blurb}</p>
-            <h3 className="mt-3 text-[3.35rem] font-semibold leading-[0.88] tracking-tight text-ink md:text-[3.6rem]">
+          <div className="relative z-10 flex h-[42%] flex-col px-5 pb-2 pt-6 md:px-7 md:pt-8">
+            <p className="pr-16 text-[14px] leading-snug text-ink/55 md:pr-20 md:text-[16px]">
+              {agent.blurb}
+            </p>
+            <h3 className="mt-2 text-[2.15rem] font-semibold leading-[0.88] tracking-tight text-ink md:mt-3 md:text-[3.6rem]">
               {agent.name}
             </h3>
           </div>
@@ -57,13 +59,13 @@ export function FlipCard({ agent }: { agent: Agent }) {
                   : "h-full w-full object-cover object-[center_35%]"
               }`}
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-6 pb-5">
-              <p className="text-[14px] font-medium text-ink/50">Qayerga mos</p>
-              <div className="mt-2 flex flex-wrap gap-2">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-4 pb-4 md:px-6 md:pb-5">
+              <p className="text-[13px] font-medium text-ink/50 md:text-[14px]">Qayerga mos</p>
+              <div className="mt-2 flex flex-wrap gap-1.5 md:gap-2">
                 {agent.goodFor.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-white/90 px-3.5 py-1.5 text-[14px] text-ink"
+                    className="rounded-full bg-white/90 px-2.5 py-1 text-[12px] text-ink md:px-3.5 md:py-1.5 md:text-[14px]"
                   >
                     {item}
                   </span>
@@ -87,7 +89,7 @@ export function FlipCard({ agent }: { agent: Agent }) {
           aria-label={`${agent.name} kartasini qaytarish`}
         >
           <FlipButton />
-          <h3 className="pr-24 text-[2.35rem] font-semibold leading-[0.95] tracking-tight">
+          <h3 className="pr-16 text-[1.8rem] font-semibold leading-[0.95] tracking-tight md:pr-24 md:text-[2.35rem]">
             {agent.name}
           </h3>
           <dl className="mt-7 grid flex-1 gap-6 text-[16px] leading-relaxed text-ink/80">
