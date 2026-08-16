@@ -67,7 +67,7 @@ export function Home() {
           <img
             src="/images/hero-crew.jpg"
             alt="Yetuk OmniCrew agentlari yig'ilish stolida ishlayapti"
-            className="aspect-[4/3] w-full rounded-[28px] object-cover object-center md:aspect-[16/9] md:rounded-none"
+            className="aspect-[16/9] w-full rounded-[28px] object-cover object-center md:rounded-none"
           />
           <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-tr from-ink/20 via-transparent to-transparent md:block" />
           <div className="mt-4 rounded-[24px] bg-white p-5 shadow-[0_16px_50px_rgba(20,24,32,0.14)] md:absolute md:bottom-8 md:left-8 md:right-auto md:mt-0 md:max-w-xl md:bg-white/96 md:p-8">
