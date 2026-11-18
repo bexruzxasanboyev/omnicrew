@@ -1,0 +1,151 @@
+export type Lang = "uz" | "ru" | "en";
+
+export type AgentCopy = {
+  name: string;
+  blurb: string;
+  goodFor: string[];
+  does: string;
+  used: string;
+  gets: string;
+};
+
+export type ScenarioCopy = {
+  title: string;
+  hook: string;
+  problem: string;
+  impact: string;
+  cause: string;
+  solution: string;
+  cta: string;
+};
+
+export type PlanCopy = {
+  name: string;
+  price: string;
+  note: string;
+  points: string[];
+  featured?: boolean;
+};
+
+export type Copy = {
+  meta: { title: string; description: string };
+  nav: {
+    agents: string;
+    problems: string;
+    faq: string;
+    audit: string;
+    auditShort: string;
+    language: string;
+  };
+  footer: { blurb: string; register: string; rights: string };
+  flip: {
+    turn: string;
+    fits: string;
+    does: string;
+    how: string;
+    gets: string;
+    register: string;
+    flipAria: string;
+    backAria: string;
+    imageAlt: string;
+  };
+  phone: { country: string };
+  home: {
+    heroTitle: string;
+    heroAccent: string;
+    heroLead: string;
+    heroCta: string;
+    founderAlt: string;
+    crewAlt: string;
+    cardTitle: string;
+    cardBody: string;
+    launchCta: string;
+    resultsTitle: string;
+    resultsAccent: string;
+    resultsLead: string;
+    badges: string[];
+    bannerAlt: string;
+    agentsTitle: string;
+    agentsAccent: string;
+    alwaysTitle: string;
+    alwaysAccent: string;
+    alwaysBody: string;
+    alwaysAlt: string;
+    setupTitle: string;
+    setupAccent: string;
+    setupLead: string;
+    steps: { alt: string; title: string; body: string }[];
+    securityTitle: string;
+    securityAccent: string;
+    securityLead: string;
+    securityAlt: string;
+    security: { title: string; body: string }[];
+    problemsTitle: string;
+    problemsAccent: string;
+    problemsLead: string;
+    registerTitle: string;
+    registerAccent: string;
+    registerLead: string;
+    registerAlt: string;
+    formTitle: string;
+    name: string;
+    namePlaceholder: string;
+    phone: string;
+    company: string;
+    companyPlaceholder: string;
+    employees: string;
+    employeesPlaceholder: string;
+    employeeOptions: string[];
+    errPhone: string;
+    errRequired: string;
+    errNetwork: string;
+    okCompany: string;
+    okGeneric: string;
+    sending: string;
+    sent: string;
+    submit: string;
+  };
+  scenarioLabels: { problem: string; impact: string; cause: string; solution: string };
+  agents: AgentCopy[];
+  faqs: { q: string; a: string }[];
+  scenarios: ScenarioCopy[];
+  auth: {
+    titleUp: string;
+    titleIn: string;
+    leadUp: string;
+    leadIn: string;
+    email: string;
+    password: string;
+    errEmail: string;
+    errPassword: string;
+    loading: string;
+    okUp: string;
+    okIn: string;
+    submitUp: string;
+    submitIn: string;
+    hasAccount: string;
+    signIn: string;
+    newHere: string;
+    start: string;
+  };
+  demo: {
+    title: string;
+    lead: string;
+    alt: string;
+    name: string;
+    email: string;
+    company: string;
+    err: string;
+    ok: string;
+    loading: string;
+    sent: string;
+    submit: string;
+  };
+  pricing: { title: string; lead: string; start: string; plans: PlanCopy[] };
+  securityPage: {
+    alt: string;
+    title: string;
+    lead: string;
+    items: { title: string; body: string }[];
+  };
+};

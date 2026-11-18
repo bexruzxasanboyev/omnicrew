@@ -1,8 +1,9 @@
 @import "@fontsource-variable/outfit";
+@import "@fontsource-variable/manrope";
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit Variable", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Outfit Variable", "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   --color-ink: #141820;
   --color-muted: #5c6573;
   --color-line: #d5dce6;

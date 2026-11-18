@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { useI18n } from "../i18n";
 
 type Mode = "in" | "up";
 
 export function Auth({ mode }: { mode: Mode }) {
+  const { t } = useI18n();
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -15,12 +17,12 @@ export function Auth({ mode }: { mode: Mode }) {
 
     if (!email || !email.includes("@")) {
       setStatus("error");
-      setMessage("Ishchi emailni to‘g‘ri kiriting.");
+      setMessage(t.auth.errEmail);
       return;
     }
     if (password.length < 8) {
       setStatus("error");
-      setMessage("Parol kamida 8 belgidan iborat bo‘lsin.");
+      setMessage(t.auth.errPassword);
       return;
     }
 
@@ -28,27 +30,19 @@ export function Auth({ mode }: { mode: Mode }) {
     setMessage("");
     window.setTimeout(() => {
       setStatus("ok");
-      setMessage(
-        mode === "up"
-          ? "Hisob ochildi. Tasdiqlash uchun pochtani tekshiring."
-          : "Kirdingiz. Bu demo shu sahifada qoladi.",
-      );
+      setMessage(mode === "up" ? t.auth.okUp : t.auth.okIn);
     }, 700);
   }
 
   return (
     <main className="mx-auto flex min-h-[70dvh] max-w-md flex-col justify-center px-5 py-16">
       <h1 className="text-3xl font-semibold tracking-tight">
-        {mode === "up" ? "Boshlash" : "Kirish"}
+        {mode === "up" ? t.auth.titleUp : t.auth.titleIn}
       </h1>
-      <p className="mt-2 text-muted">
-        {mode === "up"
-          ? "Biznes kabinetni oching va birinchi AI agentni ishga tushiring."
-          : "AI agentlaringiz boshqaruviga qaytdingiz."}
-      </p>
+      <p className="mt-2 text-muted">{mode === "up" ? t.auth.leadUp : t.auth.leadIn}</p>
       <form onSubmit={onSubmit} className="mt-8 grid gap-4" noValidate>
         <label className="grid gap-2 text-sm">
-          Ish emaili
+          {t.auth.email}
           <input
             name="email"
             type="email"
@@ -57,7 +51,7 @@ export function Auth({ mode }: { mode: Mode }) {
           />
         </label>
         <label className="grid gap-2 text-sm">
-          Parol
+          {t.auth.password}
           <input
             name="password"
             type="password"
@@ -80,22 +74,22 @@ export function Auth({ mode }: { mode: Mode }) {
           disabled={status === "loading"}
           className="h-11 rounded-full bg-cobalt text-sm font-medium text-white hover:bg-cobalt-deep disabled:opacity-60"
         >
-          {status === "loading" ? "Kuting..." : mode === "up" ? "Boshlash" : "Kirish"}
+          {status === "loading" ? t.auth.loading : mode === "up" ? t.auth.submitUp : t.auth.submitIn}
         </button>
       </form>
       <p className="mt-6 text-sm text-muted">
         {mode === "up" ? (
           <>
-            Hisobingiz bormi?{" "}
+            {t.auth.hasAccount}{" "}
             <Link to="/sign-in" className="text-cobalt">
-              Kirish
+              {t.auth.signIn}
             </Link>
           </>
         ) : (
           <>
-            Yangimisiz?{" "}
+            {t.auth.newHere}{" "}
             <Link to="/get-started" className="text-cobalt">
-              Boshlash
+              {t.auth.start}
             </Link>
           </>
         )}

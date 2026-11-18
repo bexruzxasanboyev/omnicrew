@@ -1,48 +1,19 @@
 import { Link } from "react-router-dom";
 import { Check } from "@phosphor-icons/react";
-
-const plans = [
-  {
-    name: "Starter",
-    price: "$29",
-    note: "agent / oy",
-    points: ["1 ta biznes kabinet", "2 ta AI agent", "Asosiy skill paketlar", "Email yordam"],
-  },
-  {
-    name: "Business",
-    price: "$79",
-    note: "agent / oy",
-    points: [
-      "Cheksiz biznes jarayonlar",
-      "Umumiy skill kutubxonasi",
-      "Admin boshqaruvi",
-      "Seyf tasdiqlari",
-      "Ustuvor yordam",
-    ],
-    featured: true,
-  },
-  {
-    name: "Company",
-    price: "Biz bilan gaplashing",
-    note: "maxsus hajm",
-    points: ["SSO va SCIM", "Alohida izolyatsiya", "Xavfsizlik ko‘rigi", "Biznesga mos maxsus skillar"],
-  },
-];
+import { useI18n } from "../i18n";
 
 export function Pricing() {
+  const { t } = useI18n();
+
   return (
     <main className="mx-auto max-w-[1180px] px-5 py-16">
-      <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">Narxlar</h1>
-      <p className="mt-4 max-w-[48ch] text-lg text-muted">
-        Kredit bilan boshlang. Biznes o‘ssa, yangi AI agent qo‘shasiz. Istalgan vaqt bekor qilasiz.
-      </p>
+      <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">{t.pricing.title}</h1>
+      <p className="mt-4 max-w-[48ch] text-lg text-muted">{t.pricing.lead}</p>
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
-        {plans.map((plan) => (
+        {t.pricing.plans.map((plan) => (
           <article
             key={plan.name}
-            className={`rounded-[28px] p-7 ${
-              plan.featured ? "bg-ink text-white" : "bg-white"
-            }`}
+            className={`rounded-[28px] p-7 ${plan.featured ? "bg-ink text-white" : "bg-white"}`}
           >
             <h2 className="text-xl font-semibold">{plan.name}</h2>
             <p className="mt-6 text-4xl font-semibold tracking-tight">{plan.price}</p>
@@ -60,12 +31,10 @@ export function Pricing() {
             <Link
               to="/get-started"
               className={`mt-8 inline-flex h-11 items-center rounded-full px-5 text-sm font-medium ${
-                plan.featured
-                  ? "bg-white text-ink"
-                  : "bg-cobalt text-white hover:bg-cobalt-deep"
+                plan.featured ? "bg-white text-ink" : "bg-cobalt text-white hover:bg-cobalt-deep"
               }`}
             >
-              Boshlash
+              {t.pricing.start}
             </Link>
           </article>
         ))}

@@ -1,6 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
+import { useI18n } from "../i18n";
 import { phoneCountries, phoneFormats, type PhoneCountry } from "../phoneCountries";
+
+function countryName(country: PhoneCountry, lang: string) {
+  const chars = [...country.flag];
+  const iso = chars
+    .slice(0, 2)
+    .map((char) => String.fromCharCode((char.codePointAt(0) ?? 0) - 0x1f1e6 + 65))
+    .join("");
+  try {
+    return new Intl.DisplayNames([lang], { type: "region" }).of(iso) || country.name;
+  } catch {
+    return country.name;
+  }
+}
 
 const fallback = phoneCountries[0];
 
@@ -31,6 +45,11 @@ function detectCode(raw: string) {
 }
 
 export function PhoneInput({ name }: { name: string }) {
+  const { lang, t } = useI18n();
+  const names = useMemo(
+    () => new Map(phoneCountries.map((country) => [country.flag + country.name, countryName(country, lang)])),
+    [lang],
+  );
   const [country, setCountry] = useState<PhoneCountry>(fallback);
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
@@ -78,7 +97,7 @@ export function PhoneInput({ name }: { name: string }) {
           onClick={() => setOpen((v) => !v)}
           aria-haspopup="listbox"
           aria-expanded={open}
-          aria-label="Davlat kodini tanlash"
+          aria-label={t.phone.country}
           className="flex shrink-0 items-center gap-1.5 border-r border-line px-3 text-[18px] text-ink"
         >
           <span aria-hidden="true">{country.flag}</span>
@@ -104,7 +123,7 @@ export function PhoneInput({ name }: { name: string }) {
           className="absolute left-0 right-0 top-[calc(100%+6px)] z-20 max-h-64 overflow-y-auto rounded-xl border border-line bg-white py-1 shadow-[0_16px_40px_rgba(20,24,32,0.14)]"
         >
           {phoneCountries.map((c) => (
-            <li key={c.name}>
+            <li key={c.flag + c.name}>
               <button
                 type="button"
                 role="option"
@@ -114,7 +133,7 @@ export function PhoneInput({ name }: { name: string }) {
                   c.name === country.name ? "bg-fog font-medium" : ""
                 }`}
               >
-                <span className="truncate text-ink">{c.name}</span>
+                <span className="truncate text-ink">{names.get(c.flag + c.name)}</span>
                 <span className="flex shrink-0 items-center gap-2 text-muted">
                   {c.code}
                   <span aria-hidden="true">{c.flag}</span>
